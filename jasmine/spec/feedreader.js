@@ -92,6 +92,17 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+
+        // Call loadFeed(0) to load the initial feed, and set its callback to function done
+        beforeEach(function(done) {
+            loadFeed(0, done);
+        });
+
+        // Now we can check the required conditions after loadFeed() has completed
+        it('have at least a single .entry element within the .feed container', function(done) {
+            expect($('.feed').find('.entry')[0]).toBeDefined();
+            done();
+        });
     });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
@@ -101,5 +112,32 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+
+        // First, execute loadFeed(1) to obtain initial href for the first entry
+        // Then, execute loadFeed(2), and make sure the href of the first entry in the new feed is different
+        var initialHref = '';
+        var finalHref = '';
+
+        // Execute loadFeed(1)
+        beforeEach(function(done) {
+            loadFeed(1, function() {
+                initialHref = $('.feed .entry-link:first-child').attr('href');
+                done();
+            });
+        });
+
+        // Now execute loadFeed(2) and make sure the href is different
+        it('actually changes the content', function(done) {
+            loadFeed(2, function() {
+                finalHref = $('.feed .entry-link:first-child').attr('href');
+                expect(finalHref).not.toBe(initialHref);
+                done();
+            });            
+        });
+
+        // Restore the content to that of loadFeed(0)
+        afterEach(function(done) {
+            loadFeed(0, done);
+        });
     });
 }());
