@@ -10,9 +10,7 @@
 var allFeeds = [
     {
         name: 'Udacity Blog',
-        //name: '',  // DEBUG
         url: 'http://blog.udacity.com/feed'
-        //url: ''  // DEBUG
     }, {
         name: 'CSS Tricks',
         url: 'http://css-tricks.com/feed'
@@ -24,8 +22,6 @@ var allFeeds = [
         url: 'http://feeds.feedburner.com/udacity-linear-digressions'
     }
 ];
-
-// allFeeds = [];  // DEBUG
 
 /* This function starts up our application. The Google Feed
  * Reader API is loaded asynchonously and will then call this
