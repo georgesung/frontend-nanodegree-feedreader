@@ -7,7 +7,7 @@ In this project you are given a web-based application that reads RSS feeds. The 
 
 Open index.html in your browser
 
-# Steps taken to complete this project
+## Steps taken to complete this project
 
 1. Download the [required project assets](http://github.com/udacity/frontend-nanodegree-feedreader).
 2. Review the functionality of the application within your browser.
